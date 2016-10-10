@@ -14,6 +14,7 @@
 You have bought: <c:out value="${theProduct.getName()}"/>.</br>
 It costed you: <c:out value="${theProduct.getPrice()}"/>.</br>
 There are <c:out value="${theProduct.getAmount()}"/> left inside this machine.
+<br><br><br><button onclick="window.location.href='index'">Order another one</button>
 <form>
 </form>
 </body>

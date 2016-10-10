@@ -23,7 +23,6 @@ public class VendingServlet extends HttpServlet {
     protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("theList",productRepository.getProducts());
         req.getRequestDispatcher("/index.jsp").forward(req,resp);
-        System.out.println("hi");
     }
 
 //    HashMap<String, Object> model = new HashMap<>();
