@@ -24,18 +24,40 @@ public class ProductRepository {
         }
     }
 
-    public Product getProductByid(int id){
+    /**
+     *
+     * @param product This prints the parameters of the product object
+     *
+     * @
+     */
+    public void printProduct(Product product){
+        System.out.printf("id: %s \n" +
+                "category: %s \n" +
+                "name: %s \n" +
+                "amount: %s \n" +
+                "price: %s \n", product.getId(), product.getCategory(), product.getName(), product.getAmount(), product.getPrice());
+    }
+
+
+    public Product getProductByid(String id){
         Product product = null;
 
         try {
             //My SQL statement should get select a row by id. It doesn't yet.
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM products WHERE id = ?");
-            ResultSet results = preparedStatement.getResultSet();
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE products SET amount = amount - 1 WHERE id = ?");
+            preparedStatement.setString(1,id);
             preparedStatement.execute();
 
-            preparedStatement.setInt(1,id);
-            product = new Product(results.getInt("id"), results.getString("category"), results.getString("name"),
-            results.getInt("amount"), results.getFloat("price"));
+            preparedStatement = connection.prepareStatement("SELECT * FROM products WHERE id = ?");
+            preparedStatement.setString(1,id);
+            preparedStatement.execute();
+
+            ResultSet results = preparedStatement.getResultSet();
+
+            if(results.next()){
+                product = new Product(results.getInt("id"), results.getString("category"), results.getString("name"),
+                results.getInt("amount"), results.getFloat("price"));
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();

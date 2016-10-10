@@ -19,11 +19,7 @@ public class TransactionServlet extends HttpServlet {
     @Override
     protected void doPost (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("You picked " + req.getParameter("theChoice"));
-//        int id = Integer.valueOf(req.getParameter("theChoice"));
-        int id = 1;
-        System.out.println("The list value is " + id);
-
-        req.setAttribute("theProduct",productRepository.getProducts().get(id));
+        req.setAttribute("theProduct",productRepository.getProductByid(req.getParameter("theChoice")));
         req.getRequestDispatcher("/views/transaction.jsp").forward(req,resp);
     }
 }

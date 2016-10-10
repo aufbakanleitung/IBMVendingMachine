@@ -15,9 +15,9 @@ public class VendingmachineApplication extends SpringBootServletInitializer {
 	ProductRepository conn = new ProductRepository();
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(VendingmachineApplication.class, args);
-		new ProductRepository().getProductByid(2);
+//		ProductRepository productRepository = new ProductRepository();
+//		productRepository.printProduct(productRepository.getProductByid(4));
 	}
 
 	@Bean

@@ -20,18 +20,15 @@
           </tr>
 
           <tr>
-             <%int i = 0;%>
              <c:forEach items="${theList}" var="product">
              <td>${product.id}</td>
              <td>${product.category}</td>
              <td>${product.name}</td>
              <td>${product.amount}</td>
              <td>${product.price}<td/>
-             <td><form action="/transaction" method="post"><button name="theChoice" value=${i}>
+             <td><form action="/transaction" method="post"><button name="theChoice" value=${product.id}>
              Pick me!
              </button></form></td>
-             <%=i%>
-             <%i++;%>
           </tr>
 
           </c:forEach>
